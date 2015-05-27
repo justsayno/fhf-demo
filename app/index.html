@@ -32,104 +32,30 @@
 
     <div class="container">
         <h1>Artists</h1>
-        <ul class="artist-list">
-              <li class="artist-item row">
+        <ul class="artist-list" ng-controller="ArtistListController">
+              <li class="artist-item row" ng-repeat="artist in artists">
                     <div class="artist-image col-sm-2">
-                        <img src="/app/images/beyonce.jpg">
+                        <img ng-src="{{artist.ImageUrl}}">
                     </div>
                     <div class="artist-detail col-sm-10">
-                        <h3 class="artist-name">Beyonce</h3>
+                        <h3 class="artist-name">{{artist.Name}}</h3>
                         <h5>Stats</h5>
                         <ul class="artist-stats">
-                          <li><strong>Genre: </strong>
-                              <ul>
-                                  <li>Rnb</li>
-                                  <li>Pop</li>
-                              </ul>
-                          </li>
-                          <li><strong>Number of albums:</strong> 5</li>    
+                          <li><strong>Genres: </strong><ul><li ng-repeat="genre in artist.Genres">{{genre}}</li></ul></li>
+                          <li><strong>Number of alubms:</strong> {{artist.NumberOfAlbums}}</li>    
                         </ul>
-                    </div>
-              </li>
-              <li class="artist-item row">
-                  <div class="artist-image col-sm-2">
-                      <img src="/app/images/led-zepplin.jpg">
-                  </div>
-                  <div class="artist-detail col-sm-10">
-                      <h3 class="artist-name">Led Zepplin</h3>
-                      <h5>Stats</h5>
-                      <ul class="artist-stats">
-                        <li><strong>Genre: </strong>Rock</li>
-                        <li><strong>Number of albums:</strong> 
-                              <ul>
-                                  <li>Rock</li>
-                              </ul>
-                        </li>    
-                      </ul>
-                  </div>
-              </li>
-              <li class="artist-item row">
-                  <div class="artist-image col-sm-2">
-                      <img src="/app/images/kanye-west.jpg">
-                  </div>
-                  <div class="artist-detail col-sm-10">
-                      <h3 class="artist-name">Kanye West</h3>
-                      <h5>Stats</h5>
-                      <ul class="artist-stats">
-                        <li><strong>Genre: </strong>
-                              <ul>
-                                  <li>Hip Hop</li>
-                                  <li>Rap</li>
-                              </ul>
-                        </li>     
-                        <li><strong>Number of albums:</strong> 7</li>    
-                      </ul>
-                  </div>
-              </li>
-              <li class="artist-item row">
-                  <div class="artist-image col-sm-2">
-                      <img src="/app/images/katy-perry.jpg">
-                  </div>
-                  <div class="artist-detail col-sm-10">
-                      <h3 class="artist-name">Katy Perry</h3>
-                      <h5>Stats</h5>
-                      <ul class="artist-stats">
-                        <li><strong>Genre: </strong>
-                              <ul>
-                                  <li>Pop</li>
-                              </ul>
-                        </li> 
-                        <li><strong>Number of albums:</strong> 5</li>    
-                      </ul>
-                  </div>
-              </li>
-              <li class="artist-item row">
-                  <div class="artist-image col-sm-2">
-                      <img src="/app/images/taylor-swift.jpg">
-                  </div>
-                  <div class="artist-detail col-sm-10">
-                      <h3 class="artist-name">Taylor Swift</h3>
-                      <h5>Stats</h5>
-                      <ul class="artist-stats">
-                        <li><strong>Genre: </strong>
-                              <ul>
-                                  <li>Pop</li>
-                                  <li>Country</li>
-                              </ul>
-                        </li> 
-                        <li><strong>Number of albums:</strong> 5</li>    
-                      </ul>
-                  </div>
-              </li>
-          </ul>
+                   </div>
+             </li>
+       </ul>
 
     </div><!-- /.container -->
 
     <!-- bower_components -->
-        <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <!-- bower_components -->
-
+  
     <!-- app-->
     <script src="scripts/app.js"></script>
     <!-- app -->
