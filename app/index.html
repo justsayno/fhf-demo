@@ -6,6 +6,7 @@
   <title>My AngularJS App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/app/bower_components/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="/app/bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="styles/app.css">
 </head>
@@ -43,12 +44,16 @@
                   <img ng-src="{{artist.ImageUrl}}">
                 </div>
                 <div class="artist-detail col-sm-10">
-                    <h3 class="artist-name">{{artist.Name}}</h3>
-                    <h5>Stats</h5>
-                    <ul class="artist-stats">
-                      <li><strong>Genres: </strong><ul><li ng-repeat="genre in artist.Genres">{{genre}}</li></ul></li>
-                      <li><strong>Number of alubms:</strong> {{artist.NumberOfAlbums}}</li>    
-                    </ul>
+                      <h3 class="artist-name">{{artist.Name}} <i ng-click="deleteArtist(artist)"  class="fa fa-trash-o delete pull-right"></i></h3>
+                      <h5>Stats</h5>
+                      <ul class="artist-stats">
+                        <li><strong>Genres: </strong>
+                          <ul>
+                            <li ng-repeat="genre in artist.Genres">{{genre}}</li>
+                          </ul>
+                        </li>
+                        <li><strong>Number of alubms:</strong> {{artist.NumberOfAlbums}}</li>    
+                      </ul>
                 </div>
               </li>
        </ul>

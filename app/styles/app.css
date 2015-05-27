@@ -27,3 +27,7 @@ h3,h4,a, a:visited{
 .artist-stats{
   list-style: square;
 }
+
+.delete:hover{
+    cursor:pointer;
+}
