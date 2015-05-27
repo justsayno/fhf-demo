@@ -35,10 +35,11 @@
         <h1>Artists</h1>
         <ul class="artist-list" ng-controller="ArtistListController">
               <form>
-                <label>Search: </label>
-                <input ng-model="query.Name"></input>
+                    <label>Search: </label>
+                    <input ng-model="query"></input>
+                    <button ng-click="resetArtists()" class="btn">Reset</button>
               </form>
-              
+                            
               <li class="artist-item row" ng-repeat="artist in artists | filter:query">
                 <div class="artist-image col-sm-2">
                   <img ng-src="{{artist.ImageUrl}}">
@@ -59,11 +60,12 @@
        </ul>
 
     </div><!-- /.container -->
-
+    
     <!-- bower_components -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <!-- bower_components -->
     
     <!-- app-->
