@@ -1,4 +1,4 @@
-angular.module('app', ['LocalStorageModule', 'ngRoute']).config(function (localStorageServiceProvider) {
+angular.module('app', ['LocalStorageModule', 'ngRoute', 'ui.sortable']).config(function (localStorageServiceProvider) {
   localStorageServiceProvider
     .setPrefix('music-app');
 }).config(['$routeProvider',
