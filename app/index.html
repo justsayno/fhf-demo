@@ -33,19 +33,24 @@
     <div class="container">
         <h1>Artists</h1>
         <ul class="artist-list" ng-controller="ArtistListController">
-              <li class="artist-item row" ng-repeat="artist in artists">
-                    <div class="artist-image col-sm-2">
-                        <img ng-src="{{artist.ImageUrl}}">
-                    </div>
-                    <div class="artist-detail col-sm-10">
-                        <h3 class="artist-name">{{artist.Name}}</h3>
-                        <h5>Stats</h5>
-                        <ul class="artist-stats">
-                          <li><strong>Genres: </strong><ul><li ng-repeat="genre in artist.Genres">{{genre}}</li></ul></li>
-                          <li><strong>Number of alubms:</strong> {{artist.NumberOfAlbums}}</li>    
-                        </ul>
-                   </div>
-             </li>
+              <form>
+                <label>Search: </label>
+                <input ng-model="query.Name"></input>
+              </form>
+              
+              <li class="artist-item row" ng-repeat="artist in artists | filter:query">
+                <div class="artist-image col-sm-2">
+                  <img ng-src="{{artist.ImageUrl}}">
+                </div>
+                <div class="artist-detail col-sm-10">
+                    <h3 class="artist-name">{{artist.Name}}</h3>
+                    <h5>Stats</h5>
+                    <ul class="artist-stats">
+                      <li><strong>Genres: </strong><ul><li ng-repeat="genre in artist.Genres">{{genre}}</li></ul></li>
+                      <li><strong>Number of alubms:</strong> {{artist.NumberOfAlbums}}</li>    
+                    </ul>
+                </div>
+              </li>
        </ul>
 
     </div><!-- /.container -->
