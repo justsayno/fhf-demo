@@ -1,38 +1,25 @@
-angular.module('app').factory('ArtistService', function() {
-    var artists = [{
-        "Name":"Beyonce",
-        "ImageUrl":"images/beyonce.jpg",
-        "Genres": ['pop','rnb'],
-        "NumberOfAlbums":"5",
-    },
-    {
-        "Name":"Led Zepplin",
-        "ImageUrl":"images/led-zepplin.jpg",
-        "Genres":['rock'],
-        "NumberOfAlbums":"5",
-    },
-    {
-        "Name":"Kanye West",
-        "ImageUrl":"images/kanye-west.jpg",
-        "Genres":['hip hop','rap'],
-        "NumberOfAlbums":"7",
-    },
-    {
-        "Name":"Katy Perry",
-        "ImageUrl":"images/katy-perry.jpg",
-        "Genres":['pop'],
-        "NumberOfAlbums":"5",
-    },
-    {
-        "Name":"Taylor Swift",
-        "ImageUrl":"images/taylor-swift.jpg",
-        "Genres":['pop','country'],
-        "NumberOfAlbums":"5",
-    }];
+angular.module('app').factory('ArtistService', 
+    [ '$http' , '$q',
+    function($http , $q) {
+        var getArtists = function() {
+                var deferred = $q.defer();
 
-    return {
-        GetArtists : function(name) {
-            return artists;
+                $http.get('api/artists.json').
+                    success(function(data) {
+                    // this callback will be called asynchronously
+                    // when the response is available
+                        deferred.resolve(data);
+                    }).
+                    error(function() {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                        deferred.reject("There was an error: ");
+                    });
+
+                return deferred.promise;
         }
-    }
-})
+
+        return {
+                GetArtists : getArtists
+        }
+}])

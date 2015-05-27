@@ -1,6 +1,6 @@
 angular.module('app').controller('ArtistListController', 
-    ['$scope', 'localStorageService', 'ArtistService',
-    function($scope, localStorageService, ArtistService){
+    ['$scope', '$log', 'localStorageService', 'ArtistService',
+    function($scope, $log, localStorageService, ArtistService){
 
         $scope.deleteArtist = function(artist){
             for(i = 0; i < $scope.artists.length; i++){
@@ -9,15 +9,23 @@ angular.module('app').controller('ArtistListController',
                 }
             }
         };
-        
-        $scope.resetArtists = function(){
-            $scope.artists = ArtistService.GetArtists();
-        }; 
 
-        //the artists either are the oens in the store or go get them
+        $scope.resetArtists = function(){
+            $scope.artists = ArtistService.GetArtists().then(function(data){
+                    $scope.artists = data;
+                }).reject(function(error){
+                    $log.error(error);
+                });                                                                                         
+        };
+
+        //the artists either are the ones in the store or go get them
         //from the service
         var artistsInStore = localStorageService.get('artists');  
-        $scope.artists = artistsInStore || ArtistService.GetArtists();    
+        $scope.artists = artistsInStore || ArtistService.GetArtists().then(function(data){
+                $scope.artists = data;
+            }).reject(function(error){
+                $log.error(error);
+            });
 
         //sets a watch on that store binding the $scope.artists to
         //the store 'artists'                          
@@ -25,4 +33,4 @@ angular.module('app').controller('ArtistListController',
             localStorageService.set('artists', $scope.artists);
         }, true); 
 
-}])
+}]);
