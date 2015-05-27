@@ -1,0 +1,23 @@
+<h1>Artists</h1>
+<ul class="artist-list" ng-controller="ArtistListController">
+    <form>
+      <label>Search: </label>
+      <input ng-model="query"></input>
+      <button ng-click="resetArtists()" class="btn">Reset</button>
+    </form>
+
+    <li class="artist-item row" ng-repeat="artist in artists | filter:query">
+          <div class="artist-image col-sm-2">
+              <img ng-src="{{artist.ImageUrl}}">
+          </div>
+          <div class="artist-detail col-sm-10">
+               <h3 class="artist-name"><a href="#/artists/{{artist.Name}}">{{artist.Name}}</a> <i ng-click="deleteArtist(artist)" class="fa fa-trash-o delete pull-right"></i></h3>
+              <h5>Stats</h5>
+              <ul class="artist-stats">
+                <li><strong>Genres: </strong><ul><li ng-repeat="genre in artist.Genres">{{genre}}</li></ul></li>
+                <li><strong>Number of alubms:</strong> {{artist.NumberOfAlbums}}</li>    
+              </ul>
+
+          </div>
+    </li>
+</ul>
