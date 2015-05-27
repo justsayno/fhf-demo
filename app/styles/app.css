@@ -1,0 +1,29 @@
+body {
+  padding-top: 50px;
+}
+
+form {
+  padding: 15px 0;
+}
+
+h3,h4,a, a:visited{
+  color:#FFD300;
+}
+
+.artist-list,
+.artist-single{
+  padding-left:0;
+  padding-top: 20px;
+  list-style:none;
+}
+
+.artist-item {
+  background-color:#080808;
+  color: white;
+  margin-bottom:2px;
+  min-height:180px;
+}
+
+.artist-stats{
+  list-style: square;
+}
