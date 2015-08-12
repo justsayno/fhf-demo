@@ -125,13 +125,14 @@ You will be promted to enter your password and get a success/failure message.
 
 On windows the best way to do this is by downloading the node installer from [NodeJS.org](https://nodejs.org/). Follow all the default steps and this should get you up and running.
 
-The Windows installer only hast he node version from when the latest build was. Update your install like this:
+The Windows installer only hast he node version from when the latest build was. Update your install by navigating to your
+NodeJS folder (usually in C:\Program Files (x86)\nodejs) and entering the command:
 
 ```
 npm install --global npm@latest
 ```
 
-If you have any warning about missing dependencies such as:
+The reason for navigating to the folder is because otherwise you can run into issues with it updating in your AppData folder and not in the global node modules area. If you have any warning about missing dependencies such as:
 
 ```
 npm WARN unmet dependency C:\Users\Asus\node_modules\bower\node_modules\p-thrott
